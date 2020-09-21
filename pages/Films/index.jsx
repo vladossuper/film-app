@@ -7,15 +7,42 @@ import { NoFilm } from '../../components/NoFilm';
 import { Search } from '.././../components/Searchbar';
 import {  ScrollView, View } from 'react-native';
 import { AddFilm } from '../../components/AddFilm';
+import Toast from 'react-native-root-toast';
 
 export const Films = () => {
 	const dispatch = useDispatch();
   const status = useSelector(state => state.filmsReducer.status);
 	const films = useSelector(state => state.filmsReducer.films);
+	const statusDelete = useSelector(state => state.filmsReducer.deleteStatus);
+	const statusSetFilm = useSelector(state => state.filmsReducer.setFilmStatus);
  
   useEffect(() => {
-    dispatch(fetchFilms());
-  }, [dispatch]);
+		dispatch(fetchFilms());
+		if (statusDelete && statusDelete === 200) {
+			Toast.show('Film was deleted', {
+				duration: 1500,
+				position: 40,
+				shadow: true,
+				animation: true,
+				hideOnPress: true,
+				delay: 0,
+				opacity: 1,
+				backgroundColor: "green"
+			});
+		};
+		if (statusSetFilm && statusSetFilm === 200) {
+			Toast.show('Film was added', {
+				duration: 1500,
+				position: 40,
+				shadow: true,
+				animation: true,
+				hideOnPress: true,
+				delay: 0,
+				opacity: 1,
+				backgroundColor: "green"
+			});
+		}
+  }, [dispatch, statusDelete, statusSetFilm]);
 	
 	return (
 		<>

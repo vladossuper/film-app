@@ -15,10 +15,18 @@ export const AddFilm = () => {
 	const [format, setFormat] = useState(' ');
 	const [stars, setStars] = useState(' ');
 
-	const error = useFormValidation({ title, year, format, stars });
+	const error = useFormValidation({ title, year, format, stars })
+
+	const trimBeforeSubmit = () => {
+		setTitle(title.trim());
+		setYear(year.trim());
+		setFormat(format.trim());
+		setStars(stars.trim());
+	}
 
 	const onSubmit = () => {
-		if (title.length > 0 && year.length > 0 && format.length > 0 && stars.length > 0) {
+		trimBeforeSubmit();
+		if (title.trim().length > 0 && year.trim().length > 0 && format.trim().length > 0 && stars.trim().length > 0) {
 			dispatch(setFilm({ title, release_year: year, format, stars }))
 			handleClose();
 		}
@@ -26,10 +34,10 @@ export const AddFilm = () => {
 	
 	const handleClose = () => {
 		setVisible(false);
-		setTitle('');
-		setYear('');
-		setFormat('');
-		setStars('');
+		setTitle(' ');
+		setYear(' ');
+		setFormat(' ');
+		setStars(' ');
 	}
 	
 	return (

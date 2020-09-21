@@ -22,7 +22,11 @@ export const setFilm = ({ title, release_year, format, stars }) => async dispatc
     const { status } = response;
     if (status === 200) {
         dispatch(fetchFilms());
-    }; 
+    };
+    dispatch(actions.setFilmStatus({ status }));
+    setTimeout(() => {
+      dispatch(actions.setFilmStatus({ status: null }))
+    },1000); 
   } catch (err) {
     const { status } = err.response;
     dispatch(actions.setFilmStatus({ status }));
@@ -37,6 +41,9 @@ export const deleteFilm = ({ _id }) => async dispatch => {
         dispatch(fetchFilms());
       };
       dispatch(actions.deleteStatus({ status }));
+      setTimeout(() => {
+        dispatch(actions.deleteStatus({ status }));
+      }, 1000)
       setTimeout(() => {
         dispatch(actions.deleteStatus({ status: null }));
       }, 1000);
