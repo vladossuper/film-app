@@ -28,12 +28,6 @@ export const deleteStatus = status => {
   };
 };
 
-export const uploadStatus = status => {
-  return {
-    type: types.UPLOAD_STATUS,
-    payload: status
-  };
-};
 
 export const detailsStatus = status => {
   return {

@@ -56,7 +56,6 @@ export const deleteFilm = ({ _id }) => async dispatch => {
 
 export const filmDetails = ({ _id }) => async dispatch => {
   try {
-    console.log(_id);
     const response = await api.post({ path: 'film/details', params: { _id } })
     const { status, data } = response;
     const { film } = data;
