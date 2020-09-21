@@ -54,5 +54,5 @@
 Компьютер/ноутбук и мобильное устройство должны находится в одной сети. Только так запуститься приложение после считывания кода. 
 
 ## Ссылка на .apk файл
-(https://drive.google.com/file/d/1cwy5z1gd4sxa7dcdML9yFINoL3do6g5y/view?usp=sharing)
+(https://drive.google.com/file/d/1xX_ymqZisuwxHqIHZWMvkl4RNsW3h2B_/view?usp=sharing)
 
