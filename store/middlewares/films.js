@@ -26,10 +26,13 @@ export const setFilm = ({ title, release_year, format, stars }) => async dispatc
     dispatch(actions.setFilmStatus({ status }));
     setTimeout(() => {
       dispatch(actions.setFilmStatus({ status: null }))
-    },1000); 
+    }, 1000); 
   } catch (err) {
     const { status } = err.response;
     dispatch(actions.setFilmStatus({ status }));
+    setTimeout(() => {
+      dispatch(actions.setFilmStatus({ status: null }))
+    }, 1000); 
   }
 };
 
@@ -42,15 +45,14 @@ export const deleteFilm = ({ _id }) => async dispatch => {
       };
       dispatch(actions.deleteStatus({ status }));
       setTimeout(() => {
-        dispatch(actions.deleteStatus({ status }));
-      }, 1000)
-      setTimeout(() => {
         dispatch(actions.deleteStatus({ status: null }));
       }, 1000);
   } catch (err) {
     const { status } = err.response;
     dispatch(actions.deleteStatus({ status }));
-
+    setTimeout(() => {
+      dispatch(actions.deleteStatus({ status: null }));
+    }, 1000);
   }
 };
 

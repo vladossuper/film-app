@@ -1,19 +1,11 @@
 import React from 'react';
-import { deleteFilm } from '../../store/middlewares';
-import { useDispatch } from 'react-redux';
 import { Card, Button, Paragraph } from 'react-native-paper';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
+import { DeleteModal } from '../DeleteFilm';
 
 
 export const FilmDetails = ({ film }) => {
 	const route = useRoute();
-	const dispatch = useDispatch();
-	const navigation = useNavigation();
-	
-	const filmDelete = _id => {
-		dispatch(deleteFilm({ _id }));
-		navigation.navigate('Films');
-	};
 
 	return (
 		<Card style={{ marginTop: 10 }}>
@@ -24,7 +16,7 @@ export const FilmDetails = ({ film }) => {
 				<Paragraph>Stars: {film.stars}</Paragraph>
 			</Card.Content>
 			<Card.Actions style={{display: 'flex', justifyContent: 'space-between'}}>
-				<Button mode='outlined' icon='delete' color='red' onPress={() => filmDelete(film._id)}>Delete</Button>
+				<DeleteModal _id={film._id} />
 				{route.name !== 'Details' && <Button mode='outlined' icon='information-outline' onPress={() => filmInfo(film._id)}>Info</Button>}
 			</Card.Actions>
 		</Card>

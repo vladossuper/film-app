@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import { Provider } from 'react-redux';
@@ -9,11 +9,18 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Films } from './pages/Films';
 import { Details } from './pages/Details';
+import * as ScreenOrientation from 'expo-screen-orientation';
 
 
 export default function App() {
   const Tab = createBottomTabNavigator();
   const Stack = createStackNavigator();
+
+  useEffect(() => {
+    (async function changeScreenOrientation() {
+      await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    })
+  })
 
   return (
     <Provider store={store}>

@@ -42,6 +42,18 @@ export const Films = () => {
 				backgroundColor: "green"
 			});
 		}
+		if (statusSetFilm && statusSetFilm === 302) {
+			Toast.show('Film was already exist', {
+				duration: 1500,
+				position: 40,
+				shadow: true,
+				animation: true,
+				hideOnPress: true,
+				delay: 0,
+				opacity: 1,
+				backgroundColor: "orange"
+			});
+		}
   }, [dispatch, statusDelete, statusSetFilm]);
 	
 	return (
@@ -58,7 +70,6 @@ export const Films = () => {
 					)
 				})}
 			</ScrollView>
-			{/* <NoFilm /> */}
 		</>
 		
 	)
